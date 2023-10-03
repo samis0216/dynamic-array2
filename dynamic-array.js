@@ -1,47 +1,59 @@
 class DynamicArray {
-
   constructor(defaultSize = 4) {
-
-    // Your code here 
+    this.length = 0;
+    this.capacity = defaultSize;
+    this.data = new Array(this.capacity);
   }
 
   read(index) {
-
-    // Your code here 
+    return this.data[index];
   }
 
   push(val) {
-
-    // Your code here 
+    this.data[this.length] = val;
+    this.length++;
   }
 
-
   pop() {
+    let popped = this.data[this.length - 1];
 
-    // Your code here 
+    this.data[this.length - 1] = undefined;
+    if (this.length > 0) {
+      this.length--;
+    }
+    return popped;
   }
 
   shift() {
+    let shifted = this.data[0];
 
-    // Your code here 
+    for (let i = 0; i < this.length; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    if (this.length > 0) {
+      this.length--;
+    }
+
+    return shifted;
   }
 
   unshift(val) {
+    for (let i = this.length; i > 0; i--) {
+      this.data[i] = this.data[i - 1];
+    }
+    this.data[0] = val;
+    this.length++;
 
-    // Your code here 
+    return this.length;
   }
 
   indexOf(val) {
-
-    // Your code here 
+    // Your code here
   }
 
   resize() {
-
-    // Your code here 
+    // Your code here
   }
-
 }
-
 
 module.exports = DynamicArray;
